@@ -17,8 +17,8 @@
           <%= form_tag gossip_comments_path(@gossip), class: 'card p-3' do %>
             <h2 class="text-center mb-4">Add a Comment</h2>
             <div class="form-group">
-              <%= label_tag :user_id, "User ID" %>
-              <%= text_field_tag 'comment[user_id]', nil, class: 'form-control' %>
+              <%= label_tag :user_id, "Votre User ID:" %>
+              <%= text_field_tag 'comment[user_id]', session[:user_id], readonly: true,  class: 'form-control' %>
             </div>
 
             <div class="form-group">
@@ -26,7 +26,7 @@
               <%= text_area_tag 'comment[content]', nil, class: 'form-control', rows: 4 %>
             </div>
 
-            <%= hidden_field_tag 'comment[gossip_id]', @gossip.id %>
+            <%= hidden_field_tag 'comment[gossip_id]', @gossip.id %> 
             <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
             <%= submit_tag "Add Comment", class: 'btn btn-primary btn-block' %>

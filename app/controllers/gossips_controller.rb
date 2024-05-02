@@ -1,4 +1,8 @@
 class GossipsController < ApplicationController
+
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :ensure_creator, only: [:edit, :update, :destroy]
+
   def index
     puts "here first"
     @gossips = Gossip.all

@@ -2,10 +2,14 @@
 <body>
   <% if flash[:danger] %>
     <div class="alert alert-danger">
-      <%= flash[:danger] %>
+      <%= flash[:danger] %> <!--NE PAS METTRE DANGER, PREFERER ERROR !-->
     </div>
   <% end %>
-  
+    <% if flash[:error] %>
+    <div class="alert alert-danger">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
   <div class="container mt-5">
     <h1 class="mb-4">Login</h1>
     <%= form_tag session_index_path, method: :post do %>
