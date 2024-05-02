@@ -13,14 +13,19 @@
             <h1>Gossip Details</h1>
           </div>
           <div class="card-body">
-            <p><strong>Nom :</strong> <%= @gossip.user.first_name %></p>
-            <p><strong>A dit :</strong> "<%= @gossip.title %> <%= @gossip.description %>"</p>
-            <p><strong>Author :</strong> <%= link_to @gossip.user.first_name, user_path(@gossip.user) %></p>
+          <p><strong>Nom :</strong> <%= @gossip.user.first_name %></p>
+          <p><strong>A dit :</strong> "<%= @gossip.title %> <%= @gossip.description %>"</p>
+          <p><strong>Author :</strong> <%= link_to @gossip.user.first_name, user_path(@gossip.user) %></p>
+          <% if @gossip.user.city %>
             <p><strong>Author's City :</strong> <%= link_to @gossip.user.city.name, city_path(@gossip.user.city) %></p>
-            <%= link_to "Edit", edit_gossip_path(@gossip), class: "btn btn-outline-dark mr-2" %>
-            <%= link_to "Supprimer", gossip_path(@gossip), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-outline-danger mr-2" %>
-            <%= link_to "Commenter", new_gossip_comment_path(@gossip), class: "btn btn-outline-dark" %>
-          </div>
+          <% else %>
+            <p><strong>Author's City :</strong> Unknown</p>
+          <% end %>
+          <%= link_to "Edit", edit_gossip_path(@gossip), class: "btn btn-outline-dark mr-2" %>
+          <%= link_to "Supprimer", gossip_path(@gossip), method: :delete, data: { confirm: "Êtes-vous sûr ?" }, class: "btn btn-outline-danger mr-2" %>
+          <%= link_to "Commenter", new_gossip_comment_path(@gossip), class: "btn btn-outline-dark" %>
+        </div>
+
         </div>
         
         <div class="mt-4">

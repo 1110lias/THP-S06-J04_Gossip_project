@@ -16,7 +16,7 @@ class GossipsController < ApplicationController
   
   def create
     @gossip = Gossip.new(gossip_params)
-
+    @gossip.user_id = session[:user_id]
     if @gossip.save
       redirect_to gossips_path, notice: 'Gossip créé avec succès!'
       flash[:success] = "C'EST UN SUCCES!BRAVO!" #pour afficher le bandeau alerte (Voir html new)
@@ -51,6 +51,6 @@ class GossipsController < ApplicationController
   private
   
   def gossip_params
-    params.require(:gossip).permit(:title, :description, :user_id)
+    params.require(:gossip).permit(:title, :description)
   end
 end
