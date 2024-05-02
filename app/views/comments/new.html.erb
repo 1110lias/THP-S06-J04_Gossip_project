@@ -1,24 +1,41 @@
-<body>
-  <% if flash[:danger] %>
-    <div class="alert alert-danger">
-      <%= flash[:danger] %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Gossip Project</title>
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css', integrity: 'sha384-P6m6Pv3wrPfd6hEUH6D8sTiK7xhlD/HFk3Ft+Q9ZyRYNPI+9LvprK51PI5m9mr3h', crossorigin: 'anonymous' %>
+  </head>
+  <body class="bg-light">
+    <% if flash[:danger] %>
+      <div class="alert alert-danger">
+        <%= flash[:danger] %>
+      </div>
+    <% end %>
+
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <%= form_tag gossip_comments_path(@gossip), class: 'card p-3' do %>
+            <h2 class="text-center mb-4">Add a Comment</h2>
+            <div class="form-group">
+              <%= label_tag :user_id, "User ID" %>
+              <%= text_field_tag 'comment[user_id]', nil, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :content, "Comment Content" %>
+              <%= text_area_tag 'comment[content]', nil, class: 'form-control', rows: 4 %>
+            </div>
+
+            <%= hidden_field_tag 'comment[gossip_id]', @gossip.id %>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+            <%= submit_tag "Add Comment", class: 'btn btn-primary btn-block' %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
 
-  <%= form_tag gossip_comments_path(@gossip) do %>
-    <div class="form-group">
-      <%= label_tag :user_id, "User ID" %>
-      <%= text_field_tag 'comment[user_id]', nil, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= label_tag :content, "Contenu du Commentaire" %>
-      <%= text_area_tag 'comment[content]', nil, class: 'form-control' %>
-    </div>
-
-    <%= hidden_field_tag 'comment[gossip_id]', @gossip.id %>
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-
-    <%= submit_tag "Commenter", class: 'btn btn-primary' %>
-  <% end %>
-</body>
+    <!-- Include Bootstrap JS (optional if you need Bootstrap JavaScript functionality) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

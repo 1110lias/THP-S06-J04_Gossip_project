@@ -1,0 +1,37 @@
+<html>
+<body>
+  <% if flash[:danger] %>
+    <div class="alert alert-danger">
+      <%= flash[:danger] %>
+    </div>
+  <% end %>
+  
+  <div class="container mt-5">
+    <h1 class="mb-4">Register yourself on this wonderful Gossiping website!</h1>
+    <%= form_tag user_index_path, method: :post do %>
+      <div class="form-group">
+        <%= label_tag :age, "Age" %>
+        <%= text_field_tag 'user[age]', nil, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :first_name, "First name" %>
+        <%= text_field_tag 'user[first_name]', nil, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :last_name, "Last name" %>
+        <%= text_field_tag 'user[last_name]', nil, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :email, "email" %>
+        <%= email_field_tag 'user[email]', nil, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :password, "Password" %>
+        <%= password_field_tag 'user[password]', nil, class: 'form-control' %>
+      </div>
+      <%= submit_tag "Create User", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+
+</body>
+</html>

@@ -4,9 +4,14 @@
     <title>The Gossip Project</title>
   </head>
   <body>
-  <% if flash[:success] %>
+ <% if flash[:success] %>
   <div class="alert alert-success">
     <%= flash[:success] %>
+  </div>
+<% end %>
+ <% if flash[:danger] %>
+  <div class="alert alert-danger">
+    <%= flash[:danger] %>
   </div>
 <% end %>
 <div class="jumbotron">
@@ -18,7 +23,6 @@
     <a class="btn btn-primary btn-lg" href="https://chat.openai.com/" role="button">Learn more</a>
   </p>
 </div>
-  <h1>The Gossip Project day3 v3</h1>
 <!-- Container for cards with increased top margin -->
 <div class="container mt-5">
   <div class="row">

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_secure_password
     has_many :gossips
     has_many :tags
     has_many :recipients
@@ -14,6 +15,10 @@ class User < ApplicationRecord
     presence: true
     validates :age, 
     presence: true
+    validates :password_digest, 
+    presence: true
     has_many :comments
     has_many :gossips, through: :comments
+    
+
 end
