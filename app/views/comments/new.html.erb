@@ -17,7 +17,7 @@
           <%= form_tag gossip_comments_path(@gossip), class: 'card p-3' do %>
             <h2 class="text-center mb-4">Add a Comment</h2>
             <div class="form-group">
-              <%= label_tag :user_id, "Votre User ID:" %>
+              <%= label_tag :comment, "Votre User ID:" %>
               <%= text_field_tag 'comment[user_id]', session[:user_id], readonly: true,  class: 'form-control' %>
             </div>
 

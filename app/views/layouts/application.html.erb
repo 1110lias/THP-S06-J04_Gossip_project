@@ -41,7 +41,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%=link_to"Log-In", new_session_path, class:"dropdown-item" %>
           <%=link_to"Register", new_user_path, class:"dropdown-item" %>
-          <%=button_to"Log-out", session_path(session.id), class:"dropdown-item", method: :delete %>
+          <%=button_to"Log-out", session_index_path(session.id), class:"dropdown-item", method: :delete %>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
